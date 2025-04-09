@@ -1,0 +1,142 @@
+body {
+    font-family: sans-serif;
+    margin: 0;
+    background-color: #f4f4f4;
+    color: #333;
+    line-height: 1.6;
+}
+
+header {
+    background-color: #4CAF50;
+    color: #fff;
+    padding: 1rem;
+    text-align: center;
+    position: relative; /* Для позиционирования индикатора */
+}
+
+.offline-indicator {
+    background-color: #ffc107; /* Желтый */
+    color: #333;
+    padding: 0.5rem;
+    text-align: center;
+    font-weight: bold;
+    margin-top: 0.5rem;
+    border-radius: 4px;
+}
+
+main {
+    padding: 1rem;
+    max-width: 800px;
+    margin: 1rem auto;
+    background-color: #fff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+}
+
+.note-editor {
+    margin-bottom: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+textarea#note-input {
+    width: 100%;
+    min-height: 100px;
+    padding: 0.8rem;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 1rem;
+    box-sizing: border-box; /* Учитывает padding и border в ширине */
+    resize: vertical; /* Позволяет изменять высоту */
+}
+
+button#add-button {
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    padding: 0.8rem 1rem;
+    font-size: 1rem;
+    cursor: pointer;
+    border-radius: 4px;
+    transition: background-color 0.3s ease;
+    align-self: flex-start; /* Кнопка не растягивается */
+}
+
+button#add-button:hover {
+    background-color: #45a049;
+}
+
+h2 {
+    color: #4CAF50;
+    border-bottom: 2px solid #eee;
+    padding-bottom: 0.3rem;
+    margin-top: 1.5rem;
+}
+
+ul#notes-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+ul#notes-list li {
+    background-color: #fff;
+    border: 1px solid #eee;
+    margin-bottom: 0.8rem;
+    padding: 1rem;
+    border-radius: 4px;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start; /* Выравнивание кнопок по верху */
+    word-wrap: break-word; /* Перенос длинных слов */
+    overflow-wrap: break-word;
+}
+
+ul#notes-list li .note-content {
+    flex-grow: 1;
+    margin-right: 1rem; /* Отступ от кнопок */
+    cursor: pointer; /* Указывает, что на текст можно нажать для редактирования */
+}
+
+ul#notes-list li .note-actions {
+    display: flex;
+    gap: 0.5rem; /* Расстояние между кнопками */
+    flex-shrink: 0; /* Предотвращает сжатие блока с кнопками */
+}
+
+ul#notes-list li button {
+    background-color: #f44336; /* Красный для удаления */
+    color: white;
+    border: none;
+    padding: 0.4rem 0.8rem;
+    font-size: 0.9rem;
+    cursor: pointer;
+    border-radius: 4px;
+    transition: background-color 0.3s ease;
+}
+
+
+ul#notes-list li button:hover {
+    opacity: 0.9;
+}
+
+/* Адаптивность */
+@media (max-width: 600px) {
+    main {
+        margin: 0.5rem;
+        padding: 0.8rem;
+    }
+    ul#notes-list li {
+        flex-direction: column; /* Кнопки под текстом на маленьких экранах */
+        align-items: flex-start;
+    }
+    ul#notes-list li .note-actions {
+        margin-top: 0.5rem; /* Отступ сверху для кнопок */
+        width: 100%; /* Растянуть блок кнопок */
+        justify-content: flex-end; /* Кнопки справа */
+    }
+     button#add-button {
+        width: 100%; /* Кнопка добавления на всю ширину */
+    }
+}

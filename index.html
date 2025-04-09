@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#4CAF50"/>
+    <title>PWA Заметки</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="manifest" href="manifest.json">
+    <!-- Добавьте ссылку на иконку для iOS -->
+    <link rel="apple-touch-icon" href="icons/icon-192x192.png">
+</head>
+<body>
+    <header>
+        <h1>Мои Заметки</h1>
+        <p id="offline-indicator" class="offline-indicator" style="display: none;">Офлайн-режим</p>
+    </header>
+
+    <main>
+        <div class="note-editor">
+            <input type="hidden" id="note-id"> <!-- Для хранения ID редактируемой заметки -->
+            <textarea id="note-input" placeholder="Введите текст заметки..."></textarea>
+            <button id="add-button">Добавить заметку</button>
+        </div>
+
+        <h2>Список заметок</h2>
+        <ul id="notes-list">
+            <!-- Заметки будут добавлены сюда с помощью JS -->
+        </ul>
+    </main>
+
+    <script src="script.js"></script>
+    <script>
+        // Регистрация Service Worker
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', () => {
+                navigator.serviceWorker.register('/sw.js')
+                    .then(registration => {
+                        console.log('ServiceWorker registration successful with scope: ', registration.scope);
+                    })
+                    .catch(err => {
+                        console.log('ServiceWorker registration failed: ', err);
+                    });
+            });
+        }
+    </script>
+</body>
+</html>
